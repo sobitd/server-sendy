@@ -22,3 +22,24 @@ User.create!(first_name: 'Kimani',
              password: 'boilerplate99944',
              isAdmin: 0)
 
+parcel_one = Api::V1::Parcel.create!(
+  recipient_name: 'Laban Kimtai',
+  distance: 10,
+  recipient_contact: '0713245678',
+  order_status: 'in-transit',
+  weight: 10,
+  from: 8,
+  destination: 12,
+  user_id: 1
+)
+
+parcel_two = Api::V1::Parcel.create!(
+  recipient_name: 'Steven Kipsang',
+  distance: 12,
+  recipient_contact: '0712346789',
+  order_status: 'processed',
+  weight: 4,
+  from: 3,
+  destination: 4,
+  user_id: 2
+)
