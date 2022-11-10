@@ -1,5 +1,5 @@
 class Api::V1::ParcelsController < ApplicationController
-  before_action :authenticate_user!
+ # before_action :authenticate_user!
   before_action :set_api_v1_parcel, only: %i[ show update destroy ]
 
   # GET /api/v1/parcels
