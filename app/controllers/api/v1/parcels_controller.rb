@@ -1,10 +1,13 @@
-class Api::V1::ParcelsController < ApplicationController
- # before_action :authenticate_user!
+class Api::V1::ParcelsController < ApiController 
+  include Pundit::Authorization
+  before_action :authenticate_user!
   before_action :set_api_v1_parcel, only: %i[ show update destroy ]
 
   # GET /api/v1/parcels
   def index
     @api_v1_parcels = Api::V1::Parcel.all
+
+
 
     render json: @api_v1_parcels
   end
@@ -12,11 +15,13 @@ class Api::V1::ParcelsController < ApplicationController
   # GET /api/v1/parcels/1
   def show
     render json: @api_v1_parcel
+    authorize @api_v1_parcel
   end
 
   # POST /api/v1/parcels
   def create
     @api_v1_parcel = Api::V1::Parcel.new(api_v1_parcel_params)
+    authorize @api_v1_parcel
 
     if @api_v1_parcel.save
       render json: @api_v1_parcel, status: :created, location: @api_v1_parcel
@@ -47,6 +52,6 @@ class Api::V1::ParcelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def api_v1_parcel_params
-      params.require(:api_v1_parcel).permit(:recipient_name, :recipient_contact, :weight, :from, :destination, :distance, :total_cost, :order_status)
+      params.require(:api_v1_parcel).permit(:recipient_name, :recipient_contact, :weight, :from, :destination, :distance,:order_status)
     end
 end
