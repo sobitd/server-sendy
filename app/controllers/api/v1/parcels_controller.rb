@@ -1,4 +1,4 @@
-class Api::V1::ParcelsController < ApiController 
+class Api::V1::ParcelsController < ApiController
   include Pundit::Authorization
   before_action :authenticate_user!
   before_action :set_api_v1_parcel, only: %i[ show update destroy ]
