@@ -298,7 +298,7 @@ Devise.setup do |config|
     jwt.revocation_requests = [
       ['DELETE', %r{^/sign_out$}]
     ]
-    jwt.expiration_time = 15.day.to_i
+    jwt.expiration_time = 1.day.to_i
   end
   
   # The router that invoked `devise_for`, in the example above, would be:
